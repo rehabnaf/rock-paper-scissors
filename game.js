@@ -21,8 +21,7 @@ function getHumanChoice() {
 let humanScore = 0;
 let computerScore = 0;
 
-const humanChoice = getHumanChoice();
-const computerChoice = getComputerChoice();
+
 
 function playRound(humanChoice, computerChoice) {
     humanChoice = humanChoice.toLowerCase();
@@ -56,4 +55,13 @@ function playRound(humanChoice, computerChoice) {
         }
     }
 }
-playRound(humanChoice, computerChoice);
+function playGame() {
+    for (i = 0; i < 5; ++i) {
+        const humanChoice = getHumanChoice();
+        const computerChoice = getComputerChoice();
+        playRound(humanChoice, computerChoice);
+    }
+    return humanScore > computerScore ? `YOU WON! Your Score : ${humanScore}, Computer Score: ${computerScore}` : humanScore == computerScore ? `IT'S A DRAW, Your Score : ${humanScore} Computer Score: ${computerScore}` : `YOU LOST! Your Score : ${humanScore}, Computer Score: ${computerScore}`;
+}
+
+console.log(playGame());
