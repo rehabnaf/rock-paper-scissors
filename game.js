@@ -14,10 +14,6 @@ function getComputerChoice() {
     }
 }
 
-// function getHumanChoice() {
-//     let user_input = prompt("Rock, paper or scissors? ")
-//     return user_input;
-// }
 let humanScore = 0;
 let computerScore = 0;
 
@@ -62,24 +58,29 @@ const scissorsBtn = document.querySelector("#scissors");
 
 rockBtn.addEventListener("click", function () {
     playRound("rock", getComputerChoice())
+    displayResult();
+    decideWinner();
 });
 
 paperBtn.addEventListener("click", function () {
     playRound("paper", getComputerChoice())
-
+    displayResult();
+    decideWinner();
 });
 
 scissorsBtn.addEventListener("click", function () {
     playRound("scissors", getComputerChoice())
+    displayResult();
+    decideWinner();
 });
 
-// function playGame() {
-//     for (i = 0; i < 5; ++i) {
-//         const humanChoice = getHumanChoice();
-//         const computerChoice = getComputerChoice();
-//         playRound(humanChoice, computerChoice);
-//     }
-//     return humanScore > computerScore ? `YOU WON! Your Score : ${humanScore}, Computer Score: ${computerScore}` : humanScore == computerScore ? `IT'S A DRAW, Your Score : ${humanScore} Computer Score: ${computerScore}` : `YOU LOST! Your Score : ${humanScore}, Computer Score: ${computerScore}`;
-// }
-
-// console.log(playGame());
+function displayResult() {
+    resultContainer.innerHTML += ` <p>User Score: ${humanScore} Computer Score: ${computerScore}</p>`;
+}
+function decideWinner() {
+    if (computerScore == 5 || humanScore == 5) {
+        resultContainer.innerHTML += computerScore > humanScore ? "<p> Winner : Computer </p>" : "<p> Winner : User </p>";
+        computerScore = 0;
+        humanScore = 0;
+    }
+}
